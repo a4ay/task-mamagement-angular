@@ -9,7 +9,7 @@
     ></button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+    <!-- <form [formGroup]="taskForm" (ngSubmit)="addTask()">
       <div class="form-group">
         <label for="exampleFormControlInput1">Title</label>
         <input
@@ -36,8 +36,53 @@
       >
         Add Task
       </button>
-    </form>
-  </div>
+    </form> -->
+    <form (ngSubmit)="addNewTask(taskForm)" #taskForm="ngForm">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Title</label>
+          <input
+            required
+            minlength="3"
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Buy some fruits!"
+            ngModel
+            name="title"
+            #title="ngModel"
+          />
+          <div class="alert alert-danger" *ngIf="title.touched && !title.valid">
+            <div *ngIf="title.errors?.['required']">Tile is required!</div>
+            <div *ngIf="title.errors?.['minlength']">Title should be minimum 3 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Desciption</label>
+          <textarea
+            required
+            minlength="5"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            ngModel
+            #description="ngModel"
+            name="description"
+          ></textarea>
+          <div class="alert alert-danger" *ngIf="description.touched && !description.valid">
+            <div *ngIf="description.errors?.['required']">Description is required!</div>
+            <div *ngIf="description.errors?.['minlength']">Description should be minimum 5 characters</div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-outline-dark mt-4"
+          (click)="modal.close('Save click')"
+          [disabled]="!taskForm.form.valid"
+        >
+          Add Task
+        </button>
+      </form>
+</div>
 </ng-template>
 
 <button

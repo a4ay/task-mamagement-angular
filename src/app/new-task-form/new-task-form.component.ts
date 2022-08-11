@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, NgModel, NgForm } from '@angular/forms';
+import { STATUS, Task } from '../app.component';
 
 @Component({
   selector: 'app-new-task-form',
@@ -10,10 +11,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class NewTaskFormComponent implements OnInit {
 
   closeResult = '';
-  taskForm = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-  })
+  // taskForm = new FormGroup({
+  //   title: new FormControl(''),
+  //   description: new FormControl(''),
+  // })
 
   constructor(private modalService: NgbModal) { }
 
@@ -21,9 +22,9 @@ export class NewTaskFormComponent implements OnInit {
     
   }
 
-  addTask() {
-    console.log(this.taskForm);
-  }
+  // addTask() {
+  //   console.log(this.taskForm);
+  // }
 
   open(modal: any) {
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -33,6 +34,7 @@ export class NewTaskFormComponent implements OnInit {
     });
   }
 
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -41,6 +43,14 @@ export class NewTaskFormComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  addNewTask(taskForm: NgForm) {
+    const task: Task = {
+      ...taskForm.value,
+      status: STATUS.NEW
+    }
+    console.log(task);
   }
 
 }

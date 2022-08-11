@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-enum STATUS {NEW = 'NEW', IN_PROGRESS = 'IN_PROGRESS', COMPLETE = 'COMPLETE'}
+export enum STATUS {NEW = 'NEW', IN_PROGRESS = 'IN_PROGRESS', COMPLETE = 'COMPLETE'}
 
-interface task {
+export interface Task {
   title: string
   description: string
   status: STATUS
@@ -18,9 +18,13 @@ export class AppComponent {
   constructor(private modalService: NgbModal) {}
   title = 'task-management';
 
-  tasks: task[];
+  tasks: Task[];
 
   public open(modal: any): void {
     this.modalService.open(modal);
+  }
+
+  addTask(task: Task) {
+    console.log(task);
   }
 }
