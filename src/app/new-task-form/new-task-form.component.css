@@ -1,0 +1,10 @@
+.new-task-button {
+    width: 180px;
+}
+
+.new-task-button:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: white;
+    color: #0D6EFD;
+}

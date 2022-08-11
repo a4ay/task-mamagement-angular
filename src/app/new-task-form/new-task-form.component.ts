@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-new-task-form',
@@ -9,11 +10,19 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class NewTaskFormComponent implements OnInit {
 
   closeResult = '';
+  taskForm = new FormGroup({
+    title: new FormControl(''),
+    description: new FormControl(''),
+  })
 
   constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
     
+  }
+
+  addTask() {
+    console.log(this.taskForm);
   }
 
   open(modal: any) {
