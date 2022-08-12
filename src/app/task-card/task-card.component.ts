@@ -9,6 +9,7 @@ import { Task } from '../app.component';
 export class TaskCardComponent implements OnInit {
 
   @Input() tasks: Task[] = [];
+  @Input() bgStyle: string ='';
 
   constructor() { }
 
