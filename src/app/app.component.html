@@ -16,7 +16,7 @@
         class="task-list"
         (cdkDropListDropped)="onDrop($event)"
       >
-        <app-task-card [tasks]="todo" [bgStyle]="'bg-primary'"></app-task-card>
+        <app-task-card [tasks]="todo" [bgStyle]="'bg-primary'" (deleteTaskEvent)="deleteTask($event)"></app-task-card>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
         class="task-list"
         (cdkDropListDropped)="onDrop($event)"
       >
-        <app-task-card [tasks]="doing" [bgStyle]="'bg-danger'"></app-task-card>
+        <app-task-card [tasks]="doing" [bgStyle]="'bg-danger'" (deleteTaskEvent)="deleteTask($event)"></app-task-card>
       </div>
     </div>
 
@@ -45,8 +45,10 @@
         class="task-list"
         (cdkDropListDropped)="onDrop($event)"
       >
-        <app-task-card [tasks]="done" [bgStyle]="'bg-success'"></app-task-card>
+        <app-task-card [tasks]="done" [bgStyle]="'bg-success'" (deleteTaskEvent)="deleteTask($event)"></app-task-card>
       </div>
     </div>
   </div>
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
 </section>
+

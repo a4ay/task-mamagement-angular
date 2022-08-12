@@ -1,6 +1,10 @@
 
 
 <div [ngClass]="['task-box', bgStyle]" *ngFor="let item of tasks" cdkDrag>
+  <div class="task-control-button">
+    <mat-icon>edit</mat-icon>
+    <mat-icon (click)="deleteTask($event, item)">delete</mat-icon>
+  </div>
   <div>
     <h6>{{ item.title }}</h6>
     <span>{{ item.description }}</span>

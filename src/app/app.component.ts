@@ -93,4 +93,10 @@ export class AppComponent {
       );
     }
   }
+
+  deleteTask(id: string) {
+    this.todo = this.todo.filter( task => task.id !== id);
+    this.doing = this.doing.filter( task => task.id !== id);
+    this.done = this.done.filter( task => task.id !== id);
+  }
 }
