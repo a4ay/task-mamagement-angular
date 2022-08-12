@@ -1,9 +1,10 @@
 <section class="todo-section">
   <div class="heading row">
     <h3 class="col-10 d-inline text-primary">My Task Tracker</h3>
-    <app-new-task-form class="col-2" (newTaskEvent)="addTask($event)"> </app-new-task-form>
+    <app-new-task-form class="col-2" (newTaskEvent)="addTask($event)">
+    </app-new-task-form>
   </div>
-  <hr class="border border-primary border-2 opacity-75"/>
+  <hr class="border border-primary border-2 opacity-75" />
   <div class="row">
     <div class="task-container col">
       <h4 class="text-primary">To do</h4>
@@ -16,7 +17,12 @@
         class="task-list"
         (cdkDropListDropped)="onDrop($event)"
       >
-        <app-task-card [tasks]="todo" [bgStyle]="'bg-primary'" (deleteTaskEvent)="deleteTask($event)"></app-task-card>
+        <app-task-card
+          [tasks]="todo"
+          [bgStyle]="'bg-primary'"
+          (deleteTaskEvent)="deleteTask($event)"
+          (updateTaskEvent)="updateTask($event)"
+        ></app-task-card>
       </div>
     </div>
 
@@ -30,7 +36,12 @@
         class="task-list"
         (cdkDropListDropped)="onDrop($event)"
       >
-        <app-task-card [tasks]="doing" [bgStyle]="'bg-danger'" (deleteTaskEvent)="deleteTask($event)"></app-task-card>
+        <app-task-card
+          [tasks]="doing"
+          [bgStyle]="'bg-danger'"
+          (deleteTaskEvent)="deleteTask($event)"
+          (updateTaskEvent)="updateTask($event)"
+        ></app-task-card>
       </div>
     </div>
 
@@ -45,10 +56,18 @@
         class="task-list"
         (cdkDropListDropped)="onDrop($event)"
       >
-        <app-task-card [tasks]="done" [bgStyle]="'bg-success'" (deleteTaskEvent)="deleteTask($event)"></app-task-card>
+        <app-task-card
+          [tasks]="done"
+          [bgStyle]="'bg-success'"
+          (deleteTaskEvent)="deleteTask($event)"
+          (updateTaskEvent)="updateTask($event)"
+        ></app-task-card>
       </div>
     </div>
   </div>
-  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+  <mat-icon
+    aria-hidden="false"
+    aria-label="Example home icon"
+    fontIcon="home"
+  ></mat-icon>
 </section>
-

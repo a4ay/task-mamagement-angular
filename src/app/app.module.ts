@@ -8,12 +8,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppComponent } from './app.component';
 import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
 import { TaskCardComponent } from './task-card/task-card.component';
+import { EditTaskFormComponent } from './edit-task-form/edit-task-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewTaskFormComponent,
-    TaskCardComponent
+    TaskCardComponent,
+    EditTaskFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,6 @@
-
-
 <div [ngClass]="['task-box', bgStyle]" *ngFor="let item of tasks" cdkDrag>
   <div class="task-control-button">
-    <mat-icon>edit</mat-icon>
+    <app-edit-task-form [task]="item"  (updateTaskEvent)="updateTask($event)"></app-edit-task-form>
     <mat-icon (click)="deleteTask($event, item)">delete</mat-icon>
   </div>
   <div>

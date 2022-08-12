@@ -99,4 +99,13 @@ export class AppComponent {
     this.doing = this.doing.filter( task => task.id !== id);
     this.done = this.done.filter( task => task.id !== id);
   }
+
+  updateTask(task: Task) {
+    let thisTask: Task;
+    (!thisTask) && (thisTask=this.todo.find(tsk => tsk.id === task.id)); 
+    (!thisTask) && (thisTask=this.doing.find(tsk => tsk.id === task.id)); 
+    (!thisTask) && (thisTask=this.done.find(tsk => tsk.id === task.id)); 
+    thisTask.title = task.title
+    thisTask.description = task.description
+  }
 }

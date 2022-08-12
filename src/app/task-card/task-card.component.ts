@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Task } from '../app.component';
 
 @Component({
@@ -11,8 +12,10 @@ export class TaskCardComponent implements OnInit {
   @Input() tasks: Task[] = [];
   @Input() bgStyle: string ='';
   @Output() deleteTaskEvent = new EventEmitter<string>();
+  @Output() updateTaskEvent = new EventEmitter<Task>();
+  closeResult = '';
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -22,5 +25,8 @@ export class TaskCardComponent implements OnInit {
     this.deleteTaskEvent.emit(task.id);
   }
 
+  updateTask(task: Task) {
+    this.updateTaskEvent.emit(task);
+  }
 
 }
