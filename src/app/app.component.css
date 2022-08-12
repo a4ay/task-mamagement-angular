@@ -1,0 +1,23 @@
+.todo-section {
+    padding: 20px 120px 0px;
+}
+.task-container {
+  min-height: 800px;
+}
+
+.test-container {
+  width: 400px;
+  max-width: 70%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.task-list {
+  border: solid 1px #ccc;
+  min-height: 100px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}

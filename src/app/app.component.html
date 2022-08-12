@@ -1,2 +1,52 @@
-<app-new-task-form > </app-new-task-form>
+<section class="todo-section">
+  <div class="heading row">
+    <h3 class="col-10 d-inline text-primary">My Task Tracker</h3>
+    <app-new-task-form class="col-2" (newTaskEvent)="addTask($event)"> </app-new-task-form>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="task-container col">
+      <h2>To do</h2>
 
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[doneList, doingList]"
+        class="task-list"
+        (cdkDropListDropped)="onDrop($event)"
+      >
+        <app-task-card [tasks]="todo"></app-task-card>
+      </div>
+    </div>
+
+    <div class="task-container col">
+      <h2>Doing</h2>
+      <div
+        cdkDropList
+        #doingList="cdkDropList"
+        [cdkDropListData]="doing"
+        [cdkDropListConnectedTo]="[todoList, doneList]"
+        class="task-list"
+        (cdkDropListDropped)="onDrop($event)"
+      >
+        <app-task-card [tasks]="doing"></app-task-card>
+      </div>
+    </div>
+
+    <div class="task-container col">
+      <h2>Done</h2>
+
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList, doingList]"
+        class="task-list"
+        (cdkDropListDropped)="onDrop($event)"
+      >
+        <app-task-card [tasks]="done"></app-task-card>
+      </div>
+    </div>
+  </div>
+</section>

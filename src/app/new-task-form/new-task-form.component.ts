@@ -1,39 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, NgModel, NgForm } from '@angular/forms';
-import { STATUS, Task } from '../app.component';
+import { v4 as uuidv4 } from 'uuid';
+import { Task } from '../app.component';
 
 @Component({
   selector: 'app-new-task-form',
   templateUrl: './new-task-form.component.html',
-  styleUrls: ['./new-task-form.component.css']
+  styleUrls: ['./new-task-form.component.css'],
 })
 export class NewTaskFormComponent implements OnInit {
-
   closeResult = '';
-  // taskForm = new FormGroup({
-  //   title: new FormControl(''),
-  //   description: new FormControl(''),
-  // })
+  @Output() newTaskEvent = new EventEmitter<Task>();
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal) {}
 
-  ngOnInit(): void {
-    
-  }
-
-  // addTask() {
-  //   console.log(this.taskForm);
-  // }
+  ngOnInit(): void {}
 
   open(modal: any) {
-    this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.modalService
+      .open(modal, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
   }
-
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -47,10 +42,9 @@ export class NewTaskFormComponent implements OnInit {
 
   addNewTask(taskForm: NgForm) {
     const task: Task = {
+      id: uuidv4().toString(),
       ...taskForm.value,
-      status: STATUS.NEW
-    }
-    console.log(task);
+    };
+    this.newTaskEvent.emit(task);
   }
-
 }

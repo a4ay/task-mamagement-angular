@@ -9,34 +9,6 @@
     ></button>
   </div>
   <div class="modal-body">
-    <!-- <form [formGroup]="taskForm" (ngSubmit)="addTask()">
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Title</label>
-        <input
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Buy some fruits!"
-          formControlName="title"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Desciption</label>
-        <textarea
-          class="form-control"
-          id="exampleFormControlTextarea1"
-          rows="3"
-          formControlName="description"
-        ></textarea>
-      </div>
-      <button
-        type="submit"
-        class="btn btn-outline-dark mt-4"
-        (click)="modal.close('Save click')"
-      >
-        Add Task
-      </button>
-    </form> -->
     <form (ngSubmit)="addNewTask(taskForm)" #taskForm="ngForm">
         <div class="form-group">
           <label for="exampleFormControlInput1">Title</label>
@@ -86,7 +58,7 @@
 </ng-template>
 
 <button
-  class="new-task-button btn btn-outline-primary mt-5"
+  class="new-task-button btn btn-outline-primary"
   (click)="open(content)"
 >
   New Task
