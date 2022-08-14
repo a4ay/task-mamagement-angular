@@ -1,8 +1,10 @@
 <section class="todo-section">
   <div class="heading row">
     <h3 class="col-10 d-inline text-primary">My Task Tracker</h3>
-    <app-new-task-form class="col-2" (newTaskEvent)="addTask($event)">
-    </app-new-task-form>
+    <app-new-task-form
+      class="col-2"
+      (newTaskEvent)="addTask($event)"
+    ></app-new-task-form>
   </div>
   <hr class="border border-primary border-2 opacity-75" />
   <div class="row">
@@ -22,6 +24,7 @@
           [bgStyle]="'bg-primary'"
           (deleteTaskEvent)="deleteTask($event)"
           (updateTaskEvent)="updateTask($event)"
+          [taskStatus]="'NEW'"
         ></app-task-card>
       </div>
     </div>
@@ -41,6 +44,7 @@
           [bgStyle]="'bg-danger'"
           (deleteTaskEvent)="deleteTask($event)"
           (updateTaskEvent)="updateTask($event)"
+          [taskStatus]="'DOING'"
         ></app-task-card>
       </div>
     </div>
@@ -61,6 +65,7 @@
           [bgStyle]="'bg-success'"
           (deleteTaskEvent)="deleteTask($event)"
           (updateTaskEvent)="updateTask($event)"
+          [taskStatus]="'DONE'"
         ></app-task-card>
       </div>
     </div>

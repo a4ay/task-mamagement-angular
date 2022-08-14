@@ -1,57 +1,54 @@
 .task-box {
-    padding: 20px 10px;
-    border-bottom: solid 1px #ccc;
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    cursor: move;
-    background: white;
-    font-size: 14px;
-    position: relative;
-  }
-  
-  .cdk-drag-preview {
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-                0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
-  
-  .cdk-drag-placeholder {
-    opacity: 0;
-  }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
-  .task-box:last-child {
-    border: none;
-  }
-  
-  .task-list.cdk-drop-list-dragging .task-box:not(.cdk-drag-placeholder) {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
-  .task-control-button {
-      position: absolute;
-      right: 5px;
-      top: 5px;
-      display: flex;
-      gap: 4px;
-      
-  }
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+  position: relative;
+}
 
-  .task-control-button mat-icon {
-      cursor: pointer;
-      font-size: 1.2rem;
-  }
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
 
-  .task-control-button mat-icon:hover {
-      color: rgb(236, 227, 227);
-      
-  }
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.task-box:last-child {
+  border: none;
+}
+
+.task-list.cdk-drop-list-dragging .task-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.task-control-button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  display: flex;
+  gap: 4px;
+}
+
+.task-control-button mat-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.task-control-button mat-icon:hover {
+  color: rgb(236, 227, 227);
+}

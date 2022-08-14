@@ -1,11 +1,15 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop'
+import { Component } from '@angular/core'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 export interface Task {
-  id: string;
-  title: string;
-  description: string;
+  id: string
+  title: string
+  description: string
 }
 
 @Component({
@@ -15,7 +19,7 @@ export interface Task {
 })
 export class AppComponent {
   constructor(private modalService: NgbModal) {}
-  title = 'task-management';
+  title = 'task-management'
 
   todo: Task[] = [
     {
@@ -42,7 +46,7 @@ export class AppComponent {
       description:
         'Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim.',
     },
-  ];
+  ]
 
   doing: Task[] = [
     {
@@ -56,7 +60,7 @@ export class AppComponent {
       description:
         'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
     },
-  ];
+  ]
   done: Task[] = [
     {
       id: 'b8b90343-9fb8-43fa-a741-91260e94bfcf',
@@ -70,41 +74,46 @@ export class AppComponent {
       description:
         'In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.',
     },
-  ];
+  ]
 
   public open(modal: any): void {
-    this.modalService.open(modal);
+    this.modalService.open(modal)
   }
 
   addTask(task: Task) {
-    this.todo.push(task);
+    this.todo.push(task)
   }
 
   onDrop(event: CdkDragDrop<any>) {
-    console.log(event.previousContainer.data, event.container.data);
+    console.log(event.previousContainer.data, event.container.data)
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      )
     } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex,
-      );
+      )
     }
   }
 
   deleteTask(id: string) {
-    this.todo = this.todo.filter( task => task.id !== id);
-    this.doing = this.doing.filter( task => task.id !== id);
-    this.done = this.done.filter( task => task.id !== id);
+    this.todo = this.todo.filter((task) => task.id !== id)
+    this.doing = this.doing.filter((task) => task.id !== id)
+    this.done = this.done.filter((task) => task.id !== id)
   }
 
   updateTask(task: Task) {
-    let thisTask: Task;
-    (!thisTask) && (thisTask=this.todo.find(tsk => tsk.id === task.id)); 
-    (!thisTask) && (thisTask=this.doing.find(tsk => tsk.id === task.id)); 
-    (!thisTask) && (thisTask=this.done.find(tsk => tsk.id === task.id)); 
+    console.log(task)
+    let thisTask: Task
+    !thisTask && (thisTask = this.todo.find((tsk) => tsk.id === task.id))
+    !thisTask && (thisTask = this.doing.find((tsk) => tsk.id === task.id))
+    !thisTask && (thisTask = this.done.find((tsk) => tsk.id === task.id))
     thisTask.title = task.title
     thisTask.description = task.description
   }

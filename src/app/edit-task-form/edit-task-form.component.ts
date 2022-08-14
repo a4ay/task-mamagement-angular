@@ -1,49 +1,49 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Task } from '../app.component';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { NgForm } from '@angular/forms'
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap'
+
+import { Task } from '../app.component'
 
 @Component({
   selector: 'app-edit-task-form',
   templateUrl: './edit-task-form.component.html',
-  styleUrls: ['./edit-task-form.component.css']
+  styleUrls: ['./edit-task-form.component.css'],
 })
 export class EditTaskFormComponent implements OnInit {
+  @Input() task: Task
+  @Output() updateTaskEvent: EventEmitter<Task> = new EventEmitter<Task>()
 
-  @Input() task: Task;
-  @Output() updateTaskEvent = new EventEmitter<Task>();
+  closeResult: string = ''
 
-  closeResult = ''
+  constructor(private modalService: NgbModal) {}
 
-  constructor(private modalService: NgbModal) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  updateTask(taskForm: NgForm): void {
+    const updatedTask: Task = taskForm.value
+    this.updateTaskEvent.emit(updatedTask)
   }
 
-  updateTask(taskForm: any) {
-    console.log(this.task);
-  }
-
-  open(modal: any) {
+  open(modal: any): void {
     this.modalService
       .open(modal, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
         (result) => {
-          this.closeResult = `Closed with: ${result}`;
+          this.closeResult = `Closed with: ${result}`
         },
         (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`
+        },
+      )
   }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return 'by pressing ESC'
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+      return 'by clicking on a backdrop'
     } else {
-      return `with: ${reason}`;
+      return `with: ${reason}`
     }
   }
-
 }
