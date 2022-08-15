@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap'
 import { NgForm } from '@angular/forms'
 import { v4 as uuidv4 } from 'uuid'
-import { Task } from '../app.component'
+import { PRIORITY, Task } from '../app.component'
 
 @Component({
   selector: 'app-new-task-form',

@@ -12,6 +12,13 @@ export interface Task {
   description: string
   createdAt: Date
   completedAt: Date | null
+  priority: PRIORITY
+}
+
+export enum PRIORITY {
+  LOW= 'Low',
+  MODERATE = 'Moderate',
+  HIGH = 'High',
 }
 
 @Component({
@@ -31,6 +38,7 @@ export class AppComponent {
         'Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.',
       createdAt: new Date(),
       completedAt: null,
+      priority: PRIORITY.MODERATE
       },
     {
       id: 'f3819425-4671-4036-b4e6-9d0921ffa33a',
@@ -39,6 +47,7 @@ export class AppComponent {
         'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.',
         createdAt: new Date(),
         completedAt: null,
+        priority: PRIORITY.MODERATE
       },
     {
       id: 'ebe6cf83-3c14-41dc-a16b-95f959e59614',
@@ -47,6 +56,7 @@ export class AppComponent {
         'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
         createdAt: new Date(),
         completedAt: null,
+        priority: PRIORITY.MODERATE
       },
     {
       id: 'e08ec66f-6bec-43d5-83df-d7ec7f6281d7',
@@ -55,6 +65,7 @@ export class AppComponent {
         'Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim.',
         createdAt: new Date(),
         completedAt: null,
+        priority: PRIORITY.MODERATE
       },
   ]
 
@@ -65,6 +76,7 @@ export class AppComponent {
       description: 'Phasellus in felis.',
       createdAt: new Date(),
       completedAt: null,
+      priority: PRIORITY.MODERATE
     },
     {
       id: 'ba6ad5f8-b60c-4493-8f78-b3a95c6ae258',
@@ -73,6 +85,7 @@ export class AppComponent {
         'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.',
         createdAt: new Date(),
         completedAt: null,
+        priority: PRIORITY.MODERATE
       },
   ]
   done: Task[] = [
@@ -83,6 +96,7 @@ export class AppComponent {
         'Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi.',
         createdAt: new Date(),
         completedAt: new Date(),
+        priority: PRIORITY.MODERATE
       },
     {
       id: '0fac54e3-b6d1-4e2f-862c-20b9ad22c258',
@@ -91,6 +105,7 @@ export class AppComponent {
         'In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.',
         createdAt: new Date(),
         completedAt: new Date(),
+        priority: PRIORITY.MODERATE
       },
   ]
 
@@ -137,12 +152,12 @@ export class AppComponent {
   }
 
   updateTask(task: Task) {
-    console.log(task)
     let thisTask: Task
     !thisTask && (thisTask = this.todo.find((tsk) => tsk.id === task.id))
     !thisTask && (thisTask = this.doing.find((tsk) => tsk.id === task.id))
     !thisTask && (thisTask = this.done.find((tsk) => tsk.id === task.id))
     thisTask.title = task.title
     thisTask.description = task.description
+    thisTask.priority = task.priority
   }
 }
