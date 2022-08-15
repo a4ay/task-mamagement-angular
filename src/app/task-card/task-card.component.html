@@ -7,17 +7,17 @@
     ></app-edit-task-form>
     <mat-icon (click)="deleteTask($event, item)">delete</mat-icon>
   </div>
-  <div>
+  <div class="d-flex flex-column ">
     <h6>{{ item.title }}</h6>
-    <div>
+    <div class="">
       <span class="fw-bold">Created At:</span>
       <span>{{ item.createdAt.toDateString() }}</span>
     </div>
-    <div *ngIf="taskStatus === 'DONE'">
+    <div *ngIf="taskStatus === 'DONE'" class="mb-1">
       <span class="fw-bold">Completed At:</span>
       <span>{{ item.completedAt.toDateString() }}</span>
     </div>
-    <div >
+    <div class="mb-2">
       <span class="fw-bold">Priority:</span>
       <span>{{ item.priority }}</span>
     </div>
