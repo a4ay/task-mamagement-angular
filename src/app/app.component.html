@@ -35,7 +35,7 @@
         cdkDropList
         #doingList="cdkDropList"
         [cdkDropListData]="doing"
-        [cdkDropListConnectedTo]="[todoList, doneList]"
+        [cdkDropListConnectedTo]="[doneList]"
         class="task-list"
         (cdkDropListDropped)="onDrop($event)"
       >
@@ -56,7 +56,7 @@
         cdkDropList
         #doneList="cdkDropList"
         [cdkDropListData]="done"
-        [cdkDropListConnectedTo]="[todoList, doingList]"
+        [cdkDropListConnectedTo]="[]"
         class="task-list"
         (cdkDropListDropped)="onDrop($event)"
       >
