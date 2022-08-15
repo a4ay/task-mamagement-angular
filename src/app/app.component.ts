@@ -118,7 +118,6 @@ export class AppComponent {
   }
 
   onDrop(event: CdkDragDrop<any>) {
-    console.log(event.previousContainer.data, event.container.data)
     const prevContainerData = event.previousContainer.data
     const containerData = event.container.data
     const previousIndex = event.previousIndex

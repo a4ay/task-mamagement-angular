@@ -23,7 +23,7 @@ export class EditTaskFormComponent implements OnInit {
     const updatedTask: Task = {
       ...taskForm.value,
       createdAt: this.task.createdAt,
-      completedAt: this.task.completedAt
+      completedAt: this.task.completedAt,
     }
     this.updateTaskEvent.emit(updatedTask)
   }
