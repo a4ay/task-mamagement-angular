@@ -20,7 +20,11 @@ export class EditTaskFormComponent implements OnInit {
   ngOnInit(): void {}
 
   updateTask(taskForm: NgForm): void {
-    const updatedTask: Task = taskForm.value
+    const updatedTask: Task = {
+      ...taskForm.value,
+      createdAt: this.task.createdAt,
+      completedAt: this.task.completedAt
+    }
     this.updateTaskEvent.emit(updatedTask)
   }
 

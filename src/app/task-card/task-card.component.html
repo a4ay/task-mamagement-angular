@@ -9,6 +9,8 @@
   </div>
   <div>
     <h6>{{ item.title }}</h6>
-    <span>{{ item.description }}</span>
+    <div>Created At: {{item.createdAt.toDateString()}}</div>
+    <div *ngIf="taskStatus === 'DONE'">Completed At: {{item.completedAt.toDateString()}}</div>
+    <p>{{ item.description }}</p>
   </div>
 </div>

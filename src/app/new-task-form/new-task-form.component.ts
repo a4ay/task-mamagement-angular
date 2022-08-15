@@ -44,6 +44,8 @@ export class NewTaskFormComponent implements OnInit {
     const task: Task = {
       id: uuidv4().toString(),
       ...taskForm.value,
+      createdAt: new Date(),
+      completedAt: null,
     }
     this.newTaskEvent.emit(task)
   }
