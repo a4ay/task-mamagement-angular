@@ -40,7 +40,8 @@ export class NewTaskFormComponent implements OnInit {
     }
   }
 
-  addNewTask(taskForm: NgForm): void {
+  addNewTask(taskForm: NgForm, modal: any): void {
+    modal.close('Save click')
     const task: Task = {
       id: uuidv4().toString(),
       ...taskForm.value,

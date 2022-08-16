@@ -9,7 +9,7 @@
     ></button>
   </div>
   <div class="modal-body">
-    <form (ngSubmit)="updateTask(taskForm)" #taskForm="ngForm">
+    <form (ngSubmit)="updateTask(taskForm, modal)" #taskForm="ngForm">
       <input
         type="text"
         name="id"
@@ -87,7 +87,6 @@
       <button
         type="submit"
         class="btn btn-outline-dark mt-4"
-        (click)="modal.close('Save click')"
         [disabled]="!taskForm.form.valid"
       >
         Update Task

@@ -19,7 +19,8 @@ export class EditTaskFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  updateTask(taskForm: NgForm): void {
+  updateTask(taskForm: NgForm, modal: any): void {
+    modal.close('Save click')
     const updatedTask: Task = {
       ...taskForm.value,
       createdAt: this.task.createdAt,
