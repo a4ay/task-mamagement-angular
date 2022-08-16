@@ -1,4 +1,4 @@
-<div [ngClass]="['task-box', bgStyle]" *ngFor="let item of tasks" cdkDrag>
+<div [ngClass]="['task-box', bgStyle[item.priority]]" *ngFor="let item of tasks" cdkDrag>
   <div class="task-control-button">
     <app-edit-task-form
       [task]="item"

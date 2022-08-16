@@ -21,7 +21,6 @@
       >
         <app-task-card
           [tasks]="todo"
-          [bgStyle]="'bg-primary'"
           (deleteTaskEvent)="deleteTask($event)"
           (updateTaskEvent)="updateTask($event)"
           [taskStatus]="'NEW'"
@@ -41,7 +40,6 @@
       >
         <app-task-card
           [tasks]="doing"
-          [bgStyle]="'bg-danger'"
           (deleteTaskEvent)="deleteTask($event)"
           (updateTaskEvent)="updateTask($event)"
           [taskStatus]="'DOING'"
@@ -62,7 +60,6 @@
       >
         <app-task-card
           [tasks]="done"
-          [bgStyle]="'bg-success'"
           (deleteTaskEvent)="deleteTask($event)"
           (updateTaskEvent)="updateTask($event)"
           [taskStatus]="'DONE'"
